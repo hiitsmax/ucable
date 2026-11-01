@@ -1,0 +1,25 @@
+{
+  "name": "ucable",
+  "private": true,
+  "license": "MIT",
+  "author": "hiitsmax",
+  "type": "module",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "start": "next dev -p 3001 -H 127.0.0.1"
+  },
+  "dependencies": {
+    "next": "^16.4.3",
+    "next-auth": "^4.24.15",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "typescript": "^7.0.2"
+  }
+}

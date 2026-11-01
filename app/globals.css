@@ -1,0 +1,19 @@
+/* Page chrome only. The decoder look lives in decoder.css (tokens) and in each component's css (guide.css, hud.css). */
+* { box-sizing: border-box; margin: 0; }
+html, body { height: 100%; background: #000; color: #fff; font-family: var(--decoder-font); }
+
+.tv { position: fixed; inset: 0; }
+
+/* YouTube's own UI (title bar, watermark, "more videos") is pushed out of view:
+   the iframe is taller than the screen and clipped, and it never receives mouse input.
+   Only our overlays are visible. 16:9 screens show the whole picture; others get black bars. */
+.stage { position: absolute; inset: 0; overflow: hidden; background: #000; pointer-events: none; }
+.stage iframe { position: absolute; left: 0; top: -80px; width: 100%; height: calc(100% + 160px); border: 0; pointer-events: none; }
+
+/* channel bug, like on real TV: the channel's lockup replaces the platform logo */
+.bug { position: absolute; top: 3%; left: 3%; height: 7.5vh; width: auto; opacity: .9; pointer-events: none; filter: drop-shadow(0 2px 6px #0009); z-index: 5; }
+
+/* between two videos: uCable navy (the decoder's "no picture" blue), spinner only when it takes a while */
+.tuning { position: fixed; inset: 0; z-index: 20; background: radial-gradient(circle at 50% 40%, #0a1a9a, var(--decoder-navy) 70%); display: grid; place-items: center; }
+.tuning-spin { width: 9vh; height: 9vh; border-radius: 50%; border: 1vh solid #ffffff2a; border-top-color: var(--decoder-yellow); animation: tuning-turn 0.9s linear infinite; }
+@keyframes tuning-turn { to { transform: rotate(360deg); } }

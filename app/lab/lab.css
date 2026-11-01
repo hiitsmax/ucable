@@ -1,0 +1,50 @@
+/* /lab: developer tool, own look. The root layout still loads the TV globals (black body, .bar, .guide ...),
+   so every rule here is scoped to .lab-page or uses a lab- prefix. */
+.lab-page {
+  min-height: 100vh; padding: 16px; display: grid; gap: 16px; align-items: start;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+  background: #0d100d; color: #c8d4c8; font: 13px/1.45 ui-monospace, Menlo, Consolas, monospace;
+}
+@media (max-width: 900px) { .lab-page { grid-template-columns: 1fr; } }
+.lab-page * { box-sizing: border-box; font: inherit; color: inherit; }
+
+.lab-page button, .lab-page input, .lab-page select {
+  background: #1a201a; border: 1px solid #3a4a3a; padding: 6px 10px; cursor: pointer;
+}
+.lab-page button:hover:not(:disabled) { border-color: #7fd17f; }
+.lab-page button:disabled { opacity: .4; cursor: default; }
+.lab-page .lab-on { background: #2d4a2d; border-color: #7fd17f; }
+
+.lab-tabs { display: flex; gap: 6px; margin-bottom: 8px; }
+.lab-page textarea {
+  display: block; width: 100%; height: calc(100vh - 210px); min-height: 360px; resize: vertical;
+  padding: 10px; background: #080a08; color: #d8f0d8; border: 1px solid #3a4a3a;
+  tab-size: 2; white-space: pre; overflow: auto;
+}
+.lab-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 10px; }
+.lab-timer { color: #ffd23f; }
+.lab-error {
+  margin-top: 10px; padding: 10px; white-space: pre-wrap; word-break: break-word;
+  border: 1px solid #e04040; background: #3a1010; color: #ff9090;
+}
+.lab-hint { color: #7a8c7a; }
+
+.lab-summary { font-size: 15px; color: #fff; margin-bottom: 10px; }
+.lab-tools { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+.lab-tools input { flex: 1; min-width: 180px; }
+
+.lab-bar-row { display: grid; grid-template-columns: 180px 1fr 40px; gap: 8px; align-items: center; margin: 3px 0; }
+@media (max-width: 900px) { .lab-bar-row { grid-template-columns: 110px 1fr 40px; } }
+.lab-bar-row > span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.lab-bar { height: 10px; background: #1a201a; }
+.lab-fill { height: 100%; background: #5fbf5f; }
+.lab-bar-row > b { text-align: right; font-weight: normal; }
+
+.lab-page details { border: 1px solid #2a352a; margin-top: 8px; }
+.lab-page summary { padding: 6px 10px; cursor: pointer; background: #151b15; color: #fff; }
+.lab-scroll { overflow-x: auto; }
+.lab-table { width: 100%; border-collapse: collapse; }
+.lab-table th, .lab-table td { text-align: left; padding: 4px 6px; border-top: 1px solid #222b22; vertical-align: top; }
+.lab-table th { color: #7a8c7a; font-weight: normal; }
+.lab-table td:first-child { word-break: break-word; min-width: 180px; }
+.lab-num { text-align: right; white-space: nowrap; }

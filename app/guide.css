@@ -1,0 +1,544 @@
+/* uCable TV guide: decoder look, v2 (menu + grid).
+   Designed on a 16:9 stage that scales to the window (letterboxed). All sizes are in cqh / cqw
+   of the stage, so the layout is the same at 1280x720, 1920x1080 and 1024x768.
+   Every class is prefixed sg-. Colours come from the decoder.css tokens, with inline fallbacks. */
+
+.sg-root {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #000;
+}
+
+.sg-screen {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: min(100vw, 177.78vh);
+  height: min(100vh, 56.25vw);
+  container-type: size;
+  overflow: hidden;
+  user-select: none;
+  color: #fff;
+  font-family: var(--decoder-font, "Frutiger", "Segoe UI", "Trebuchet MS", Verdana, sans-serif);
+  font-weight: 700;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+  background: linear-gradient(180deg, var(--decoder-bg-top, #3f86e0) 0%, var(--decoder-bg-bot, #1f56b8) 100%);
+}
+
+/* ---- header: 4 glossy ovals + brand ---- */
+
+.sg-head {
+  flex: none;
+  height: 17cqh;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: start;
+  padding: 0.8cqh 2cqw 0;
+  box-sizing: border-box;
+}
+
+.sg-side {
+  display: flex;
+  gap: 2.5cqw;
+  align-items: flex-start;
+}
+
+.sg-side--r {
+  justify-content: flex-end;
+}
+
+.sg-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6cqh;
+}
+
+.sg-btn-img {
+  display: block;
+  height: 13cqh;
+  width: auto;
+}
+
+/* active button: white glow ring around the oval, yellow label */
+.sg-btn--on .sg-btn-img {
+  filter: drop-shadow(0 0 0.4cqh #fff) drop-shadow(0 0 0.4cqh #fff);
+}
+
+.sg-btn--on .sg-blabel {
+  color: var(--decoder-yellow, #f4ec00);
+}
+
+.sg-blabel {
+  font-size: 2.4cqh;
+  line-height: 1;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+
+/* fallback when the header PNG is missing */
+.sg-oval {
+  position: relative;
+  display: block;
+  width: 21cqh;
+  height: 13cqh;
+  border-radius: 50%;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--decoder-pill-hi, #8cc2ff) 0%, var(--decoder-pill-lo, #1b52b5) 100%);
+  box-shadow: inset 0 -0.6cqh 1cqh rgba(0, 10, 50, 0.55), 0 0 0 0.3cqh #0c2f7a;
+}
+
+.sg-oval::after {
+  content: "";
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  top: 6%;
+  height: 42%;
+  border-radius: 50%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.1) 100%);
+}
+
+.sg-ico {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 4.5cqh;
+  height: 3.5cqh;
+  margin: -1.75cqh 0 0 -2.25cqh;
+  border-radius: 0.6cqh;
+  transform: rotate(-14deg);
+  background: linear-gradient(160deg, #fff96a 0%, #e0c200 100%);
+  box-shadow: 0 0.2cqh 0.4cqh rgba(0, 0, 0, 0.4), inset 0 0.2cqh 0 #fff;
+}
+
+.sg-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 0.6cqh;
+}
+
+.sg-logo-main {
+  height: 10cqh;
+  width: auto;
+  filter: drop-shadow(0 0.2cqh 0.4cqh rgba(0, 0, 0, 0.5));
+}
+
+.sg-clock {
+  margin-top: 0.4cqh;
+  font-size: 2.6cqh;
+  line-height: 1;
+}
+
+/* ---- time ruler ---- */
+
+.sg-ruler {
+  flex: none;
+  display: flex;
+  align-items: stretch;
+  height: 5cqh;
+  border-top: 1px solid var(--decoder-cell-line, #8ab4ee);
+  border-bottom: 1px solid var(--decoder-cell-line, #8ab4ee);
+  background: linear-gradient(180deg, var(--decoder-bar, #1a4fb0) 0%, var(--decoder-bar-dark, #123a8c) 100%);
+}
+
+.sg-ruler .sg-chan-col {
+  flex: none;
+  width: 25cqw;
+  display: flex;
+  align-items: center;
+  padding-left: 1.5cqw;
+  box-sizing: border-box;
+  font-size: 2.4cqh;
+}
+
+.sg-ruler .sg-track {
+  height: 100%;
+}
+
+.sg-tick {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  padding-left: 2.4cqw;
+  border-left: 1px solid rgba(255, 255, 255, 0.7);
+  line-height: 5cqh;
+  font-size: 2.4cqh;
+  white-space: nowrap;
+}
+
+.sg-ra {
+  position: absolute;
+  top: 50%;
+  margin-top: -0.9cqh;
+  border-top: 0.9cqh solid transparent;
+  border-bottom: 0.9cqh solid transparent;
+}
+
+.sg-ra--l {
+  left: 0.6cqw;
+  border-right: 1.2cqh solid var(--decoder-yellow, #f4ec00);
+}
+
+.sg-ra--r {
+  right: 0.6cqw;
+  border-left: 1.2cqh solid var(--decoder-yellow, #f4ec00);
+}
+
+/* ---- screen 1: numbered category menu ---- */
+
+.sg-menu {
+  flex: 1 1 0;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3cqw;
+}
+
+.sg-mcol {
+  width: 40cqw;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6cqh;
+}
+
+.sg-mrow {
+  height: 11cqh;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 0.6cqw;
+  padding: 0 0.6cqw 0 0.4cqw;
+  cursor: pointer;
+  border: 1px solid #fff;
+  background: linear-gradient(180deg, #f4faff 0%, #bcd9f7 100%);
+}
+
+.sg-mkey {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 10cqh;
+  height: 7.4cqh;
+  border-radius: 50%;
+  font-size: 3.2cqh;
+  line-height: 1;
+  color: #fff;
+  background: linear-gradient(180deg, var(--decoder-pill-hi, #8cc2ff) 0%, var(--decoder-pill-lo, #1b52b5) 100%);
+  box-shadow: inset 0 -0.5cqh 0.8cqh rgba(0, 10, 50, 0.55), 0 0 0 0.2cqh #0c2f7a;
+}
+
+.sg-mbar {
+  flex: 1;
+  min-width: 0;
+  height: 8.6cqh;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2cqw;
+  border: 1px solid #6d9de6;
+  background: linear-gradient(180deg, #2e68cc 0%, #1a46a6 50%, #163c92 51%, #1c4eb0 100%);
+}
+
+.sg-mlabel {
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 3cqh;
+}
+
+.sg-mcount {
+  flex: none;
+  margin-left: 1cqw;
+  font-size: 2.2cqh;
+  white-space: nowrap;
+  color: #a6d4ff;
+}
+
+.sg-mrow--sel {
+  color: #000;
+  text-shadow: none;
+  background: linear-gradient(180deg, #fffb7a 0%, var(--decoder-yellow, #f4ec00) 100%);
+}
+
+.sg-mrow--sel .sg-mbar {
+  border-color: #fff;
+  background: linear-gradient(180deg, #fffb7a 0%, var(--decoder-yellow, #f4ec00) 50%, #d9d000 51%, #ece400 100%);
+}
+
+.sg-mrow--sel .sg-mcount {
+  color: #000;
+}
+
+/* ---- screen 2: programme grid ---- */
+
+.sg-rows {
+  position: relative;
+  flex: 1 1 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5cqh 0;
+}
+
+.sg-row {
+  flex: 1 1 0;
+  min-height: 0;
+  display: flex;
+  padding: 0.4cqh 0;
+}
+
+.sg-chan {
+  flex: none;
+  width: 25cqw;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 1cqw;
+  padding: 0 1.2cqw;
+  margin-right: 0.4cqw;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  border: 1px solid #fff;
+  background: linear-gradient(180deg, #2c6bd0 0%, #163f9e 55%, #0f3288 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+/* selected channel: stays blue (the pastel logos need a dark ground) but glows yellow like the selected cell */
+.sg-chan--sel {
+  background: linear-gradient(180deg, #4a8cf0 0%, #1f58c0 55%, #143f9c 100%);
+  border-color: var(--decoder-yellow, #f4ec00);
+  box-shadow: 0 0 1.4cqh var(--decoder-yellow, #f4ec00), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+.sg-chan--sel .sg-num {
+  color: var(--decoder-yellow, #f4ec00);
+}
+
+.sg-num {
+  flex: none;
+  min-width: 2.2em;
+  font-size: 3cqh;
+  line-height: 1;
+}
+
+.sg-logo {
+  flex: none;
+  height: 8cqh;
+  width: auto;
+  max-width: 19cqw;
+  object-fit: contain;
+}
+
+.sg-name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 2.2cqh;
+}
+
+.sg-track {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+.sg-cell {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  padding: 0 1cqw;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid var(--decoder-cell-line, #8ab4ee);
+  background: linear-gradient(180deg, #3d84ea 0%, #1f5cc4 48%, #1748a6 52%, #1a4fb3 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.sg-title {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 2.6cqh;
+}
+
+/* programme started before the window: yellow notch on the left */
+.sg-cell--from {
+  padding-left: 2.2cqh;
+}
+
+.sg-cell--from::before,
+.sg-cell--to::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  margin-top: -0.9cqh;
+  border-top: 0.9cqh solid transparent;
+  border-bottom: 0.9cqh solid transparent;
+}
+
+.sg-cell--from::before {
+  left: 0.5cqh;
+  border-right: 1.2cqh solid var(--decoder-yellow, #f4ec00);
+}
+
+/* programme continues after the window */
+.sg-cell--to::after {
+  right: 0.5cqh;
+  border-left: 1.2cqh solid var(--decoder-yellow, #f4ec00);
+}
+
+.sg-cell--done {
+  opacity: 0.55;
+}
+
+.sg-cell--sel {
+  color: #000;
+  text-shadow: none;
+  border-color: #fff;
+  background: linear-gradient(180deg, #fffb7a 0%, var(--decoder-yellow, #f4ec00) 50%, #d9d000 100%);
+}
+
+.sg-cell--sel::before {
+  border-right-color: #000;
+}
+
+.sg-cell--sel::after {
+  border-left-color: #000;
+}
+
+.sg-bar {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 0.6cqh;
+  background: var(--decoder-yellow, #f4ec00);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+.sg-cell--sel .sg-bar {
+  background: #000;
+}
+
+/* more channels above / below */
+.sg-more {
+  position: absolute;
+  right: 1.5cqw;
+  z-index: 2;
+  width: 0;
+  height: 0;
+  border-left: 1.1cqh solid transparent;
+  border-right: 1.1cqh solid transparent;
+}
+
+.sg-more--up {
+  top: 0;
+  border-bottom: 1.4cqh solid var(--decoder-yellow, #f4ec00);
+}
+
+.sg-more--down {
+  bottom: 0;
+  border-top: 1.4cqh solid var(--decoder-yellow, #f4ec00);
+}
+
+/* ---- info strip and legend (both screens) ---- */
+
+.sg-info {
+  flex: none;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 2.2cqw;
+  height: 5cqh;
+  padding: 0 1.2cqw;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 2.6cqh;
+  border-top: 1px solid var(--decoder-cell-line, #8ab4ee);
+  background: linear-gradient(180deg, var(--decoder-bar, #1a4fb0) 0%, var(--decoder-bar-dark, #123a8c) 100%);
+}
+
+.sg-info-t {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--decoder-yellow, #f4ec00);
+}
+
+.sg-info-a {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sg-info-s {
+  margin-left: auto;
+}
+
+.sg-legend {
+  flex: none;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 2.4cqw;
+  height: 6cqh;
+  padding: 0 1.2cqw;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 2.4cqh;
+  background: linear-gradient(180deg, #0f3288 0%, #0a2470 100%);
+}
+
+.sg-key {
+  display: inline-block;
+  margin-right: 0.8cqw;
+  padding: 0 0.6cqw;
+  line-height: 3.4cqh;
+  border: 2px solid #fff;
+  border-radius: 3px;
+  background: linear-gradient(180deg, #2b5fbf 0%, #0f3288 100%);
+}
+
+.sg-dot {
+  display: inline-block;
+  width: 2.2cqh;
+  height: 2.2cqh;
+  margin-right: 0.8cqw;
+  border-radius: 50%;
+  vertical-align: -0.4cqh;
+  box-shadow:
+    inset 0 -2px 2px rgba(0, 0, 0, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.7),
+    0 0 0 1px rgba(0, 0, 0, 0.4);
+}
+
+.sg-dot--red {
+  background: radial-gradient(circle at 35% 30%, #ff9b92 0%, var(--decoder-red, #e0302a) 60%, #7a0d0a 100%);
+}
+
+.sg-dot--green {
+  background: radial-gradient(circle at 35% 30%, #b9f5bf 0%, var(--decoder-green, #3cb043) 60%, #1d5e24 100%);
+}
+
+.sg-dot--yellow {
+  background: radial-gradient(circle at 35% 30%, #fffdb0 0%, var(--decoder-yellow, #f4ec00) 60%, #8f8800 100%);
+}
+
+.sg-dot--blue {
+  background: radial-gradient(circle at 35% 30%, #cfe4ff 0%, #3a78e8 60%, #12357e 100%);
+}

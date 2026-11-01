@@ -1,0 +1,15 @@
+node_modules
+.next
+.env.local
+.data
+next-env.d.ts
+*.tsbuildinfo
+design/reference
+profile.json
+firstphase.md
+.claude
+.impeccable
+CLAUDE.md
+__pycache__/
+*.pyc
+.DS_Store

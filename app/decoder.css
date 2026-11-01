@@ -1,0 +1,17 @@
+/* Shared look: decoder, early/mid 2000s.
+   Light-blue gradient screens, dark-blue bars, glossy blue pills with a number, YELLOW selection with black text,
+   white bold labels with a dark shadow, legend strip at the bottom with OK / ESC / coloured dots. */
+:root {
+  --decoder-bg-top: #3f86e0;
+  --decoder-bg-bot: #1f56b8;
+  --decoder-bar: #1a4fb0;
+  --decoder-bar-dark: #123a8c;
+  --decoder-cell-line: #8ab4ee;
+  --decoder-navy: #00087a; /* "no picture" navy */
+  --decoder-yellow: #f4ec00;
+  --decoder-red: #e0302a;
+  --decoder-green: #3cb043;
+  --decoder-pill-hi: #8cc2ff;
+  --decoder-pill-lo: #1b52b5;
+  --decoder-font: "Frutiger", "Segoe UI", "Trebuchet MS", Verdana, sans-serif;
+}

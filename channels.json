@@ -1,0 +1,132 @@
+[
+  {
+    "name": "uCable AI",
+    "group": "Tecnologia",
+    "about": "Artificial intelligence: LLM and model releases and comparisons (Claude/Opus, Kimi, Gemini, GPT), AI agents and coding assistants, AI industry and company news, safety and interpretability, AI policy and economics, talks about AI products. E.g. Cloud Codes, O'Reilly, Salvatore Sanfilippo's AI videos, Anthropic/OpenAI/Google announcements"
+  },
+  {
+    "name": "uCable Codice",
+    "group": "Tecnologia",
+    "about": "Programming and software engineering craft, not AI news: languages (C, Rust, PHP, JavaScript), operating systems, system design, algorithms, devops, open-source tools, developer careers and culture, coding streams and rants. E.g. ThePrimeagen / The PrimeTime, Coding Jesus, Amigoscode, offlinemark, Melting Bots, InfoQ, Casey Muratori"
+  },
+  {
+    "name": "uCable Tech",
+    "group": "Tecnologia",
+    "about": "New consumer technology: smartphone, laptop and PC hardware reviews, unboxings, gadgets, tech news and comparisons of this year's products. E.g. Marques Brownlee, Mrwhosetheboss, Linus Tech Tips, Hardware Canucks, Otto Climan, TELEFONINO.NET, GiampyTek's new-gadget videos"
+  },
+  {
+    "name": "uCable Retro",
+    "group": "Tecnologia",
+    "about": "Retro technology and nostalgia: old Windows versions and betas, Windows CE, old phones and gadgets, 'N years later' retrospectives, retro PCs, frutiger aero and Y2K aesthetic, tech history. NOT reviews of new products. E.g. Datastream, WinClient5270, The 8-Bit Guy, bub hub, 91Tech"
+  },
+  {
+    "name": "uCable Game",
+    "group": "Tecnologia",
+    "about": "Video games and nerd culture: gameplay and walkthroughs, game and console news, game reviews, football games like FIFA/FC/PES, trading card games (Lorcana, Yu-Gi-Oh, Pokémon), comics and manga news, streamer highlights and just-chatting. E.g. PLAYERINSIDUE, 8 - BIT, Dario Moccia, MikeShowSha, KekkZ"
+  },
+  {
+    "name": "uCable Amarcord",
+    "group": "Intrattenimento",
+    "about": "Italian television nostalgia and archive footage: old TV commercial sequences and spot compilations (Italia 1, Canale 5, Rete 4, La7), vintage TG and TV clips from the 80s to 2000s, old cartoon openings, channel idents, old city and street footage (e.g. Torino 1997). E.g. Canale42 2003&CO, Teo DeCitano, Archivioso, Ximo | Canale57"
+  },
+  {
+    "name": "uCable Musica",
+    "group": "Musica",
+    "about": "Songs and music videos, live performances and concerts, covers, indie, rock, alternative, pop and Italian pop, singer-songwriters, lyric videos, music news and artist stories. Single tracks: not long mixes, not rap freestyles"
+  },
+  {
+    "name": "uCable Rap",
+    "group": "Musica",
+    "about": "Rap, trap and hip-hop: Italian and international tracks, freestyles and live sessions (64 Bars), hyperpop and underground rap, rapper stories and album talk. E.g. Red Bull Droppa, Slitherich, 4 The Culture, TRASH 新 ドラゴン"
+  },
+  {
+    "name": "uCable Night",
+    "group": "Musica",
+    "about": "Long mixes and playlists (usually over 40 minutes) to leave on in the background: ambient, lofi, vaporwave, frutiger aero mixes, study or sleep music, math rock playlists, DJ sets, jungle and liquid DnB mixes, 'white girl music' playlists, motivational loops"
+  },
+  {
+    "name": "uCable Studio",
+    "group": "Musica",
+    "about": "Making music: production, mixing and songwriting breakdowns, producers' stories, instruments and gear (guitar, bass, amps, drums, synths, VCV Rack), music theory, DAWs like FL Studio, home studio tips. E.g. Benn Jordan, Mix with the Masters, Davie504, Daniel Wall, 12tone"
+  },
+  {
+    "name": "uCable Calcio",
+    "group": "Sport e Motori",
+    "about": "Football: Serie A and Juventus news, match highlights and reactions, Milan, Napoli and Roma analysis, transfers, national team, legends and old matches (Totti, Del Piero, Ronaldinho), Real Madrid, Ballon d'Or, football stories and podcasts. E.g. Juventus, Romeo Agresti, Daniele Brogna, Cronache di Spogliatoio, colo99, Gobbo Maltese"
+  },
+  {
+    "name": "uCable Motori",
+    "group": "Sport e Motori",
+    "about": "Cars and motorsport: Formula 1 and Ferrari, MotoGP, car reviews and tests, supercars, classic cars, car culture, Top Gear. E.g. Automoto.it, Top Gear, TechDrive"
+  },
+  {
+    "name": "uCable Fitness",
+    "group": "Sport e Motori",
+    "about": "Fitness, nutrition and health: workouts, bodybuilding, diets, protein and food rankings, sleep, testosterone, doctors explaining health topics, fitness meal prep. E.g. Noah Asemota, GianzCoach, Jalalsamfit"
+  },
+  {
+    "name": "uCable Mente",
+    "group": "Mente e Soldi",
+    "about": "Self-improvement and psychology: habits, focus, productivity routines, relationships and dating advice, emotional maturity, anxiety, ADHD, philosophy of life, thought experiments, motivation, minimalism. E.g. Mark Manson, The School of Life, Rian Doris, Dott. Valerio Rosso, Rick DuFer, Big Think"
+  },
+  {
+    "name": "uCable Business",
+    "group": "Mente e Soldi",
+    "about": "Startups and entrepreneurship: indie hacking, app and SaaS revenue stories, founder interviews, company building, business case studies, brand histories, tech company history. E.g. Starter Story, Simon Squibb, Chapeau, Marcello Ascani, Storie di Brand"
+  },
+  {
+    "name": "uCable Soldi",
+    "group": "Mente e Soldi",
+    "about": "Personal finance and consumer rights: ETFs and investing, savings, taxes, mortgages, banks, salaries, pensions, legal questions answered by lawyers (Italian law). E.g. Matteo Ongaro, Mr. RIP, Avv. Angelo Greco"
+  },
+  {
+    "name": "uCable Attualità",
+    "group": "News e Talk",
+    "about": "News, politics and economics commentary: Italian and international current affairs, war reports (Ukraine, Middle East), protests, elections, geopolitics, analysis of the week's events. E.g. Breaking Italy, Michele Boldrin, Davide Montingelli, Daniele Fabbri, Salvatore Sanfilippo's political opinions"
+  },
+  {
+    "name": "uCable Radio",
+    "group": "News e Talk",
+    "about": "Talk radio, podcasts and long conversations: La Zanzara, One More Time, Pulp Podcast, interviews with personalities, call-in shows, weekly live chats, podcast episodes. E.g. Zanzara Republic, I Bellissimi di Zanzara, Il Caffettino di Mario Moroni, Luca Casadei, Lex Fridman"
+  },
+  {
+    "name": "uCable Comedy",
+    "group": "Intrattenimento",
+    "about": "Comedy: sketches, stand-up, parody, try-not-to-laugh, funny compilations, Italian TV comedy (Gialappa's Band, Zelig, Roast in Peace), pranks, reaction humour, skits"
+  },
+  {
+    "name": "uCable Cinema",
+    "group": "Intrattenimento",
+    "about": "Films and TV series: movie scenes and clips, trailers, recaps, series like Skins, Friends, House M.D., movie analysis, behind the scenes. E.g. Boxoffice, Skins"
+  },
+  {
+    "name": "uCable Food",
+    "group": "Stile di vita",
+    "about": "Cooking and eating: recipes, restaurants, food challenges, snack and fast-food taste tests, Italian cuisine, street food, food vlogs. E.g. Space Valley, Cosa mangiamo oggi?, marta daddato's food videos, Cucina con Ruben"
+  },
+  {
+    "name": "uCable Vlog",
+    "group": "Stile di vita",
+    "about": "Vlogs and personal stories: travel and expat life, day in the life, city trips, fragrance and lifestyle vlogs, studying abroad, moving countries, personal updates. E.g. Carlo and Bailey, Lana Blakely, sandrino, michelle puttini, FedeCupp"
+  },
+  {
+    "name": "uCable Misteri",
+    "group": "Scoperta",
+    "about": "Mysteries and strange stories: abandoned places and urbex, true crime and unsolved cases, ghost towns, bizarre science and 'strangest things' documentaries, medical case stories, extreme explorations. E.g. Stringer media, Science Channel, Chubbyemu, Strange Evidence"
+  },
+  {
+    "name": "uCable Scienza",
+    "group": "Scoperta",
+    "about": "Science and education explainers: biology, animals, space, geology, physics, chemistry, mathematics, history, Italian popular science. E.g. Geopop, Barbascura eXtra, La Fisica Che Ci Piace, Big Think science talks, ElectroBOOM"
+  },
+  {
+    "name": "uCable Design",
+    "group": "Stile di vita",
+    "about": "Design and architecture: interiors, house tours, product and industrial design, icon and UI design, design news and talent shows. E.g. Architectural Digest, Caffè Design, Letterform Archive"
+  },
+  {
+    "name": "uCable Zapping",
+    "group": "Altri canali",
+    "about": "Anything that fits none of the other channels: odd compilations, social experiments and reaction clips, brand promos and ads, miscellaneous finds"
+  }
+]

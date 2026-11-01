@@ -1,0 +1,21 @@
+{
+  "channel": "Which TV channel should broadcast this video?",
+  "daypart": {
+    "instruction": "In which part of the day would a TV viewer most want to watch this video?",
+    "morning": "Light, upbeat, informative, short; news, quick updates",
+    "afternoon": "Casual, how-to, hobby, background-friendly",
+    "primetime": "High production, entertaining, big events, films, worth full attention",
+    "latenight": "Calm, niche, deep-dive, ambient, late chill or edgy humour"
+  },
+  "timely": "Is this video time-sensitive, so that its value drops within a few days (news, live event, trend)?",
+  "fit": {
+    "instruction": "Using the viewer profile in `viewer`, how much would this specific viewer enjoy this video right now? Judge topic, tone and creator against the profile; ignore general popularity.",
+    "levels": [
+      "Not for this viewer: off-topic or annoying",
+      "Unlikely: only loosely related to the profile",
+      "Maybe: related to some interest",
+      "Likely: matches a clear interest",
+      "Perfect: exactly what this viewer seeks out"
+    ]
+  }
+}

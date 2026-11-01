@@ -1,0 +1,18 @@
+{
+  "about": "Describe who watches: language, interests, creators they like, what they avoid. Jev reads this to judge the `fit` of each video.",
+  "creators": {
+    "example creator": 0.5
+  },
+  "weights": {
+    "daypart": 2,
+    "fresh": 1,
+    "timely": 2,
+    "fit": 2,
+    "fame": 0.6,
+    "creator": 1.5,
+    "resume": 1.5,
+    "seen": -3,
+    "skip": -1.5
+  },
+  "days": 14
+}
